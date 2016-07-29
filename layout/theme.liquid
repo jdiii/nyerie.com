@@ -623,30 +623,56 @@
 
             </div>
 
+        </div>
 
-          {% if linklists.footer.links.size > 0 %}
-            <div class="grid__item {{ footer_column_width }}">
-              <ul class="no-bullets site-footer__linklist">
-                <li class="footer__col-header"><a href="/">nyerie.com</a></li>
+        <div class="grid nyerie-footer__bottom-grid">
+
+            {% assign link_count = linklists.footer.links.size | plus:2 %}
+
+            {% if link_count == 2 %}
+                {% assign footer_column_width = 'large--one-half medium--one-half small--one-whole' %}
+            {% elsif link_count == 3 %}
+                {% assign footer_column_width = 'large--one-third medium--one-third small--one-whole' %}
+            {% elsif link_count == 4 %}
+                {% assign footer_column_width = 'large--one-quarter medium--one-quarter small--one-whole' %}
+            {% elsif link_count == 5 %}
+                {% assign footer_column_width = 'large--one-fifth medium--one-fifth small--one-whole' %}
+            {% elsif link_count == 6 %}
+                {% assign footer_column_width = 'large--one-sixth medium--one-sixth small--one-whole' %}
+            {% elsif link_count == 7 %}
+                {% assign footer_column_width = 'large--one-seventh medium--one-seventh small--one-whole' %}
+            {% else %}
+                {% assign footer_column_width = 'large--one-quarter medium--one-quarter small--one-whole' %}
+            {% endif %}
+
+
+
+
+
+              {% if linklists.footer.links.size > 0 %}
                 {% for link in linklists.footer.links %}
+                    <div class="grid__item {{ footer_column_width }}">
 
-          {% comment %}
-            Create a second column
-          {% endcomment %}
-          {% if extra_footer_linklist_column and forloop.index == footer_linklist_split %}
-              </ul>
+                            <a class="nyerie-footer__bottom-text" href="{{ link.url }}">{{ link.title }}</a>
 
-            </div>
-            <div class="grid__item {{ footer_column_width }}">
-              <ul class="no-bullets site-footer__linklist">
-          {% endif %}
-
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-
+                    </div>
                 {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
+              {% endif %}
+
+              <div class="grid__item {{ footer_column_width }}">
+
+                      <a class="nyerie-footer__bottom-text" href="#">&copy; 2016 Nyerie</a>
+
+              </div>
+
+              <div class="grid__item {{ footer_column_width }}">
+
+
+                        <a class="nyerie-footer__bottom-text" href="#">Site by John Davey</a>
+
+              </div>
+
+        </div><!--end grid-->
 
 
 
