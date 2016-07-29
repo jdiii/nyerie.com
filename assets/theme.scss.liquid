@@ -202,7 +202,7 @@ $viewportIncrement: 1px;
 $siteWidth: 1350px;
 $small: 590px;
 $medium: 768px;
-$large: 769px;
+$large: 1000px;
 $xlarge: $siteWidth + $viewportIncrement;
 
 $postSmall: $small + $viewportIncrement;
@@ -1216,7 +1216,7 @@ input[type="image"] {
   }
 }
 
-@include at-query($max, $small) {
+@include at-query($max, $large) {
   .newsletter__submit-text--large,
   .password-page__login-form__submit-text--large {
     display: none;
@@ -1228,7 +1228,7 @@ input[type="image"] {
   }
 }
 
-@include at-query($min, $postSmall) {
+@include at-query($min, $preLarge) {
   .newsletter__submit-text--large,
   .password-page__login-form__submit-text--large {
     display: block;

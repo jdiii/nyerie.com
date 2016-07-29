@@ -339,6 +339,7 @@
       </div>
     </main>
 
+    {% comment %}
     {% if settings.footer_newsletter_enable %}
       <div class="newsletter">
         <div class="wrapper">
@@ -400,80 +401,228 @@
         </div>
       </div>
     {% endif %}
+    {% endcomment %}
 
     <footer class="site-footer small--text-center nyerie-footer" role="contentinfo">
       <div class="wrapper">
 
-        <div class="grid-uniform">
+        <div class="grid">
 
-          {% comment %}
-            Default to 1 footer column (copyright/powered_by/payment_types)
-          {% endcomment %}
-          {% assign num_footer_columns = 1 %}
 
-          {% comment %}
-            Create an extra menu column if link list has more than 5 links
-          {% endcomment %}
-          {% if linklists.footer.links.size > 0 %}
+            <div class="grid__item large--two-thirds medium--two-thirds small--one-whole large--text-left medium--text-left small--text-center nyerie-footer__grid-item">
+
+                <div class="nyerie-footer__col-wrapper">
+                    <div class="nyerie-footer__col-header">Nyerie</div>
+                    <div class="nyerie-footer__col-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                </div>
+
+            </div>
+
+
+
+
             {% comment %}
-              We have a Footer menu that isn't empty, we will need another column
+              Determine whether there are social links
             {% endcomment %}
-            {% assign num_footer_columns = num_footer_columns | plus: 1 %}
-            {% assign extra_footer_linklist_column = false %}
-            {% assign footer_linklist_count = linklists.footer.links.size %}
-            {% if footer_linklist_count > 5 %}
-              {% assign extra_footer_linklist_column = true %}
-              {% comment %}
-                We split the links so we'll need another column
-              {% endcomment %}
-              {% assign num_footer_columns = num_footer_columns | plus: 1 %}
+            {% assign footer_social_enable = false %}
+            {% if
+              settings.social_twitter_link != blank
+              or settings.social_facebook_link != blank
+              or settings.social_pinterest_link != blank
+              or settings.social_google_plus_link != blank
+              or settings.social_instagram_link != blank
+              or settings.social_tumblr_link != blank
+              or settings.social_youtube_link != blank
+              or settings.social_vimeo_link != blank
+              or settings.social_fancy_link != blank
+            %}
+              {% assign footer_social_enable = true %}
             {% endif %}
-            {% comment %}
-              If we have an odd amount of links, we need to show 1 more link in 1st column
-            {% endcomment %}
-            {% assign extra_link = footer_linklist_count | modulo: 2 %}
-            {% comment %}
-              We start with a 2nd column after first column is filled up.
-            {% endcomment %}
-            {% assign footer_linklist_split = footer_linklist_count | divided_by: 2 | plus: extra_link | plus: 1 %}
-          {% endif %}
 
-          {% comment %}
-            Determine whether there are social links
-          {% endcomment %}
-          {% assign footer_social_enable = false %}
-          {% if
-            settings.social_twitter_link != blank
-            or settings.social_facebook_link != blank
-            or settings.social_pinterest_link != blank
-            or settings.social_google_plus_link != blank
-            or settings.social_instagram_link != blank
-            or settings.social_tumblr_link != blank
-            or settings.social_youtube_link != blank
-            or settings.social_vimeo_link != blank
-            or settings.social_fancy_link != blank
-          %}
-            {% assign footer_social_enable = true %}
-          {% endif %}
+            {% if footer_social_enable == true %}
+            {% comment %} Social Links {% endcomment %}
+            <div class="grid__item large--one-third medium--one-third small--one-whole large--text-left medium--text-left small--text-center nyerie-footer__grid-item">
 
-          {% comment %}
-            Calculate the number of footer columns shown. Default to 1.
-          {% endcomment %}
-          {% if footer_social_enable %}
-            {% assign num_footer_columns = num_footer_columns | plus: 1 %}
-          {% endif %}
+                <div class="nyerie-footer__col-wrapper">
+                    <div class="nyerie-footer__col-header">Social</div>
+                    <div class="nyerie-footer__col-text">
 
-          {% case num_footer_columns %}
-            {% when 0 %}
-            {% when 1 %}
-              {% assign footer_column_width = '' %}
-            {% when 2 %}
-              {% assign footer_column_width = 'one-half small--one-whole' %}
-            {% when 3 %}
-              {% assign footer_column_width = 'one-third small--one-whole' %}
-            {% when 4 %}
-              {% assign footer_column_width = 'large--one-quarter medium--one-half' %}
-          {% endcase %}
+
+                        <ul class="no-bullets social-icons">
+                          {% if settings.social_facebook_link != blank %}
+                            <li>
+                              <a href="{{ settings.social_facebook_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                                <span class="icon icon-facebook" aria-hidden="true"></span>
+                                Facebook
+                              </a>
+                            </li>
+                          {% endif %}
+                          {% if settings.social_twitter_link != blank %}
+                            <li>
+                              <a href="{{ settings.social_twitter_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                                <span class="icon icon-twitter" aria-hidden="true"></span>
+                                Twitter
+                              </a>
+                            </li>
+                          {% endif %}
+                          {% if settings.social_pinterest_link != blank %}
+                            <li>
+                              <a href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                                <span class="icon icon-pinterest" aria-hidden="true"></span>
+                                Pinterest
+                              </a>
+                            </li>
+                          {% endif %}
+                          {% if settings.social_instagram_link != blank %}
+                            <li>
+                              <a href="{{ settings.social_instagram_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                                <span class="icon icon-instagram" aria-hidden="true"></span>
+                                Instagram
+                              </a>
+                            </li>
+                          {% endif %}
+                          {% if settings.social_google_plus_link != blank %}
+                            <li>
+                              <a href="{{ settings.social_google_plus_link }}" rel="publisher" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
+                                <span class="icon icon-google_plus" aria-hidden="true"></span>
+                                Google Plus
+                              </a>
+                            </li>
+                          {% endif %}
+                          {% if settings.social_tumblr_link != blank %}
+                            <li>
+                              <a href="{{ settings.social_tumblr_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                                <span class="icon icon-tumblr" aria-hidden="true"></span>
+                                Tumblr
+                              </a>
+                            </li>
+                          {% endif %}
+                          {% if settings.social_youtube_link != blank %}
+                            <li>
+                              <a href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                                <span class="icon icon-youtube" aria-hidden="true"></span>
+                                YouTube
+                              </a>
+                            </li>
+                          {% endif %}
+                          {% if settings.social_vimeo_link != blank %}
+                            <li>
+                              <a href="{{ settings.social_vimeo_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                                <span class="icon icon-vimeo" aria-hidden="true"></span>
+                                Vimeo
+                              </a>
+                            </li>
+                          {% endif %}
+                          {% if settings.social_fancy_link != blank %}
+                            <li>
+                              <a href="{{ settings.social_fancy_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+                                <span class="icon icon-fancy" aria-hidden="true"></span>
+                                Fancy
+                              </a>
+                            </li>
+                          {% endif %}
+                        </ul>
+
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            {% else %}
+            <div class="grid__item nyerie-footer__grid-item">
+                {% comment %} placeholder {% endcomment %}
+            </div>
+            {% endif %}
+
+
+            <div class="grid__item large--two-thirds medium--two-thirds small--one-whole large--text-left medium--text-left small--text-center nyerie-footer__grid-item">
+
+                <div class="nyerie-footer__col-wrapper">
+                    <div class="nyerie-footer__col-header">Contact</div>
+                    <div class="nyerie-footer__col-text">
+                        <a class="nyerie-footer__link" href="mailto:hello@nyerie.com">hello@nyerie.com</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="grid__item large--one-third medium--one-third small--one-whole large--text-left medium--text-left small--text-center nyerie-footer__grid-item">
+
+
+                {% if settings.footer_newsletter_enable %}
+                    <div class="nyerie-footer__col-wrapper">
+                        <div class="nyerie-footer__col-header">Mailing List</div>
+                        <div class="nyerie-footer__col-input">
+
+                                  {% comment %}
+
+                                    MailChimp is the go-to newsletter service for Shopify.
+                                    Use the link below to find your MailChimp "form action"
+                                    and insert it in your site settings.
+
+                                    MailChimp newsletter integration and requirement:
+                                     - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
+
+                                  {% endcomment %}
+                                  {% if settings.newsletter_form_action != blank %}
+                                    {% assign form_action = settings.newsletter_form_action %}
+                                    <form action="{{ form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                                      <label for="Email" class="newsletter__label hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+                                      <div class="nyerie-footer__newsletter-form">
+                                        <div class="input-group">
+                                          <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="Email" class="input-group-field nyerie-footer__newsletter__input" autocorrect="off" autocapitalize="off">
+                                          <span class="input-group-btn">
+                                            <button type="submit" class="btn nyerie-footer__newsletter__submit" name="subscribe" id="Subscribe">
+                                                <span class="newsletter__submit-text--large">
+                                                Subscribe</span>
+                                                <span class="newsletter__submit-text--small">
+                          <span class="icon icon-arrow-right" aria-hidden="true"></span></span>
+                                            </button>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </form>
+                                  {% else %}
+                                    {% form 'customer' %}
+                                      {{ form.errors | default_errors }}
+                                      {% if form.posted_successfully? %}
+                                        <div class="newsletter--form">
+                                          <div class="note form-success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>
+                                        </div>
+                                      {% else %}
+                                        <label for="Email" class="newsletter__label hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+                                        <input type="hidden" name="contact[tags]" value="newsletter">
+                                        <div class="newsletter--form">
+                                          <div class="input-group">
+                                            <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field nyerie-footer__newsletter__input" autocorrect="off" autocapitalize="off">
+                                            <span class="input-group-btn">
+                                              <button type="submit" class="btn nyerie-footer__newsletter__submit" name="commit" id="Subscribe"><span class="newsletter__submit-text--large">
+                                              Subscribe</span>
+                                              <span class="newsletter__submit-text--small newsletter__submit-text--medium">
+                        <span class="icon icon-arrow-right" aria-hidden="true"></span></span></button>
+                                            </span>
+                                          </div>
+                                        </div>
+                                      {% endif %}
+                                    {% endform %}
+                                  {% endif %}
+
+
+
+
+
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+
 
           {% if linklists.footer.links.size > 0 %}
             <div class="grid__item {{ footer_column_width }}">
@@ -499,95 +648,8 @@
             </div>
           {% endif %}
 
-          {% if footer_social_enable %}
-            <div class="grid__item {{ footer_column_width }}">
-                <ul class="no-bullets social-icons">
-                    <li class="footer__col-header">Social</li>
-                  {% if settings.social_facebook_link != blank %}
-                    <li>
-                      <a href="{{ settings.social_facebook_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
-                        <span class="icon icon-facebook" aria-hidden="true"></span>
-                        Facebook
-                      </a>
-                    </li>
-                  {% endif %}
-                  {% if settings.social_twitter_link != blank %}
-                    <li>
-                      <a href="{{ settings.social_twitter_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
-                        <span class="icon icon-twitter" aria-hidden="true"></span>
-                        Twitter
-                      </a>
-                    </li>
-                  {% endif %}
-                  {% if settings.social_pinterest_link != blank %}
-                    <li>
-                      <a href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
-                        <span class="icon icon-pinterest" aria-hidden="true"></span>
-                        Pinterest
-                      </a>
-                    </li>
-                  {% endif %}
-                  {% if settings.social_instagram_link != blank %}
-                    <li>
-                      <a href="{{ settings.social_instagram_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
-                        <span class="icon icon-instagram" aria-hidden="true"></span>
-                        Instagram
-                      </a>
-                    </li>
-                  {% endif %}
-                  {% if settings.social_google_plus_link != blank %}
-                    <li>
-                      <a href="{{ settings.social_google_plus_link }}" rel="publisher" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
-                        <span class="icon icon-google_plus" aria-hidden="true"></span>
-                        Google Plus
-                      </a>
-                    </li>
-                  {% endif %}
-                  {% if settings.social_tumblr_link != blank %}
-                    <li>
-                      <a href="{{ settings.social_tumblr_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
-                        <span class="icon icon-tumblr" aria-hidden="true"></span>
-                        Tumblr
-                      </a>
-                    </li>
-                  {% endif %}
-                  {% if settings.social_youtube_link != blank %}
-                    <li>
-                      <a href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
-                        <span class="icon icon-youtube" aria-hidden="true"></span>
-                        YouTube
-                      </a>
-                    </li>
-                  {% endif %}
-                  {% if settings.social_vimeo_link != blank %}
-                    <li>
-                      <a href="{{ settings.social_vimeo_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
-                        <span class="icon icon-vimeo" aria-hidden="true"></span>
-                        Vimeo
-                      </a>
-                    </li>
-                  {% endif %}
-                  {% if settings.social_fancy_link != blank %}
-                    <li>
-                      <a href="{{ settings.social_fancy_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
-                        <span class="icon icon-fancy" aria-hidden="true"></span>
-                        Fancy
-                      </a>
-                    </li>
-                  {% endif %}
-                </ul>
-            </div>
-          {% endif %}
 
-          <div class="grid__item {{ footer_column_width }} {% if num_footer_columns == 1 %}text-center{% else %}large--text-right{% endif %}">
-             <figure class="footer-logo">
-                  <a href="/">
-                    <img src="{{ 'footer-logo.png' | asset_url }}" alt="{{ shop.name }}" class="footer-logo__img">
-                  </a>
-                  <figcaption>&#9426;2016 nyerie</figcaption>
-              </figure>
 
-          </div>
         </div>
 
       </div>
