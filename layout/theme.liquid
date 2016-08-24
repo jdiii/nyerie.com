@@ -641,6 +641,12 @@
                 {% assign footer_column_width = 'large--one-sixth medium--one-sixth small--one-whole' %}
             {% elsif link_count == 7 %}
                 {% assign footer_column_width = 'large--one-seventh medium--one-seventh small--one-whole' %}
+            {% elsif link_count == 8 %}
+                {% assign footer_column_width = 'large--one-eighth medium--one-eigth small--one-whole' %}
+            {% elsif link_count == 9 %}
+                {% assign footer_column_width = 'large--one-ninth medium--one-ninth small--one-whole' %}
+            {% elsif link_count == 10 %}
+                {% assign footer_column_width = 'large--one-fifth medium--one-fifth small--one-whole' %}
             {% else %}
                 {% assign footer_column_width = 'large--one-quarter medium--one-quarter small--one-whole' %}
             {% endif %}
@@ -668,7 +674,7 @@
               <div class="grid__item {{ footer_column_width }}">
 
 
-                        <a class="nyerie-footer__bottom-text" href="#">Site by John Davey</a>
+                        <a class="nyerie-footer__bottom-text" href="#">Designed by John Davey</a>
 
               </div>
 
