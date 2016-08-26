@@ -315,6 +315,11 @@ $collectionCollageRowHeightFull: 450px;
 $collectionCollageRowHeightLarge: 310px;
 $collectionCollageRowHeightSmall: 280px;
 
+// defining collection GRID row heights - JD
+$collectionGridRowHeightFull: 750px;
+$collectionGridRowHeightLarge: 500px;
+$collectionGridRowHeightSmall: 400px;
+
 // Password page
 $passwordPageUseBgImage: true;
 
@@ -3059,7 +3064,7 @@ button.mfp-arrow {
       right: 0;
       bottom: 0;
       left: 0;
-      opacity: 0.25;
+      opacity: 0.15;
       background-color: #000;
       @include transition(all 0.8s ease);
 
@@ -3073,7 +3078,7 @@ button.mfp-arrow {
       @include transform(scale(1.03));
 
       &:after {
-        opacity: 0.5;
+        opacity: 0.05;
       }
     }
   }
@@ -3110,6 +3115,32 @@ button.mfp-arrow {
     display: table-cell;
     vertical-align: middle;
     margin: 0 auto;
+    width:100%;
+    // background-color:rgba(0,0,0,0.35);
+    // color: white;
+    background-clip:content-box;
+  }
+
+  .collection-grid__item-title__text {
+    font-weight: 500;
+  }
+}
+
+
+
+.collection-grid__item {
+  position: relative;
+  margin-bottom: $gutter;
+  height: $collectionGridRowHeightFull;
+
+  @include at-query($max, $small) {
+    // calculate height for single item rows for
+    // mobile breakpoint only
+    height: $collectionGridRowHeightLarge;
+  }
+
+  @include at-query(null, $postSmall, $large) {
+    height: $collectionGridRowHeightLarge;
   }
 }
 

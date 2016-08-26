@@ -17,12 +17,12 @@
   Set the default image_size if no variable is set
 {% endcomment %}
 {% unless image_size %}
-  {% assign image_size = 'grande' %}
+  {% assign image_size = '1024x1024' %}
 {% endunless %}
 
 {% assign no_collection_image = true %}
 
-<div class="grid__item {{ grid_item_width }} collection-collage__item text-center">
+<div class="grid__item {{ grid_item_width }} collection-grid__item text-center">
   <a href="{{ collections[collection_handle].url }}" class="collection-grid__item-link collection-collage__item-wrapper">
     {% comment %}
       Use capture to put the collection title in a variable that is used in liquid filters
@@ -39,17 +39,17 @@
       <style>
         @media screen and (max-width: 480px) {
           .grid__image--responsive {
-            background-image: url('{{ collection_image | img_url: 'large' }}');
+            background-image: url('{{ collection_image}}');
           }
         }
         @media screen and (min-width: 481px) and (max-width: 600px) {
           .grid__image--responsive {
-            background-image: url('{{ collection_image | img_url: 'grande' }}');
+            background-image: url('{{ collection_image}}');
           }
         }
         @media screen and (min-width: 601px) {
           .grid__image--responsive {
-            background-image: url('{{ collection_image | img_url: '1024x1024' }}');
+            background-image: url('{{ collection_image }}');
           }
         }
       </style>
@@ -62,7 +62,9 @@
 
     <div class="collection-grid__item-title--wrapper">
       <span class="collection-grid__item-title">
+        <span class="collection-grid__item-title__text">
         {{ collections[collection_handle].title }}
+        </span>
       </span>
     </div>
   </a>

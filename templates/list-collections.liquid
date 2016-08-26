@@ -11,8 +11,8 @@
 {% endcomment %}
 
 <header class="section-header text-center">
-  <h1>{{ 'collections.general.catalog_title' | t }}</h1>
-  <hr class="hr--small">
+  <h1>{{ linklists.designers.title }}</h1>
+  <div class="page-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
 </header>
 
 {% assign collection_count = 0 %}
@@ -21,10 +21,9 @@
 {% comment %}
   Count how many collections we have to show
 {% endcomment %}
-{% for collection in collections %}
-  {% unless collection.handle == 'frontpage' %}
-    {% assign collection_count = collection_count | plus: 1 %}
-  {% endunless %}
+{% for link in linklists.designers.links %}
+  {% assign collection = link.object %}
+  {% assign collection_count = collection_count | plus: 1 %}
 {% endfor %}
 
 {% if collection_count > 0 %}
@@ -36,18 +35,13 @@
 {% assign divisible_by_two = collection_count | modulo: 2 %}
 
 <div class="grid collection-grid">
-  {% for collection in collections %}
+{% for link in linklists.designers.links %}
+    {% assign collection = link.object %}
     {% assign collection_handle = collection.handle %}
-
-    {% if collection.handle == 'frontpage' %}
-      {% continue %}
-    {% endif %}
-
-    {% unless collection.handle == 'frontpage' %}
-      {% assign collection_index = collection_index | plus: 1 %}
-    {% endunless %}
+    {% assign collection_index = collection_index | plus: 1 %}
     {% include 'collection-grid-collage' %}
-  {% endfor %}
+
+{% endfor %}
 
   {% if isEmpty %}
     {% comment %}

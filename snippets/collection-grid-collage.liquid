@@ -29,11 +29,11 @@
 {% assign remaining_length = collection_count | minus: collection_index %}
 {% assign previous__remaining_length = remaining_length | minus: 1 %}
 {% assign remaining_divisible_by_three = previous__remaining_length | modulo:3 %}
-{% assign image_size = 'grande' %}
+{% assign image_size = '1024x1024' %}
 
 {% assign grid_item_width = "one-whole medium--one-third large--one-third" %}
-{% if remaining_length = 1 %}
-    {% assign is_three_row = false %}
+{% if remaining_length == 1 %}
+    {% assign is_three_row = true %}
 
 {% else %}
     {% assign is_three_row = true %}
