@@ -9,6 +9,18 @@
   <article class="grid__item large--five-sixths push--large--one-twelfth article" itemscope itemtype="http://schema.org/Article">
 
     <header class="section-header text-center">
+      {% assign featured_image_src = '' %}
+
+      {% if article.image %}
+        {% assign featured_image_src = article | img_url: '1200x1200' %}
+      {% endif %}
+
+      {% unless featured_image_src == blank %}
+        <div class="article__featured-image">
+          {{ featured_image_src | img_tag: article.title }}
+        </div>
+      {% endunless %}
+
       <h1>{{ article.title }}</h1>
       <p>
         <span class="date page-description text-center"><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time></span>

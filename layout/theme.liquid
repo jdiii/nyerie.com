@@ -5,7 +5,7 @@
 <!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-
+<meta name="google-site-verification" content="_EOemOvTSJ4bF_MAt7J0aoYZpi6oesZ2a3ma4ZglZ0Y" />
   <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -451,7 +451,7 @@
                         <ul class="no-bullets social-icons">
                           {% if settings.social_facebook_link != blank %}
                             <li>
-                              <a href="{{ settings.social_facebook_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                              <a target="_blank" href="{{ settings.social_facebook_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
                                 <span class="icon icon-facebook" aria-hidden="true"></span>
                                 Facebook
                               </a>
@@ -459,7 +459,7 @@
                           {% endif %}
                           {% if settings.social_twitter_link != blank %}
                             <li>
-                              <a href="{{ settings.social_twitter_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                              <a target="_blank" href="{{ settings.social_twitter_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
                                 <span class="icon icon-twitter" aria-hidden="true"></span>
                                 Twitter
                               </a>
@@ -467,7 +467,7 @@
                           {% endif %}
                           {% if settings.social_pinterest_link != blank %}
                             <li>
-                              <a href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                              <a target="_blank" href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
                                 <span class="icon icon-pinterest" aria-hidden="true"></span>
                                 Pinterest
                               </a>
@@ -475,7 +475,7 @@
                           {% endif %}
                           {% if settings.social_instagram_link != blank %}
                             <li>
-                              <a href="{{ settings.social_instagram_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                              <a target="_blank" href="{{ settings.social_instagram_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
                                 <span class="icon icon-instagram" aria-hidden="true"></span>
                                 Instagram
                               </a>
@@ -483,7 +483,7 @@
                           {% endif %}
                           {% if settings.social_google_plus_link != blank %}
                             <li>
-                              <a href="{{ settings.social_google_plus_link }}" rel="publisher" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
+                              <a target="_blank" href="{{ settings.social_google_plus_link }}" rel="publisher" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}">
                                 <span class="icon icon-google_plus" aria-hidden="true"></span>
                                 Google Plus
                               </a>
@@ -491,7 +491,7 @@
                           {% endif %}
                           {% if settings.social_tumblr_link != blank %}
                             <li>
-                              <a href="{{ settings.social_tumblr_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                              <a target="_blank" href="{{ settings.social_tumblr_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
                                 <span class="icon icon-tumblr" aria-hidden="true"></span>
                                 Tumblr
                               </a>
@@ -499,7 +499,7 @@
                           {% endif %}
                           {% if settings.social_youtube_link != blank %}
                             <li>
-                              <a href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                              <a target="_blank" href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
                                 <span class="icon icon-youtube" aria-hidden="true"></span>
                                 YouTube
                               </a>
@@ -507,7 +507,7 @@
                           {% endif %}
                           {% if settings.social_vimeo_link != blank %}
                             <li>
-                              <a href="{{ settings.social_vimeo_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                              <a target="_blank" href="{{ settings.social_vimeo_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
                                 <span class="icon icon-vimeo" aria-hidden="true"></span>
                                 Vimeo
                               </a>
@@ -515,7 +515,7 @@
                           {% endif %}
                           {% if settings.social_fancy_link != blank %}
                             <li>
-                              <a href="{{ settings.social_fancy_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+                              <a target="_blank" href="{{ settings.social_fancy_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
                                 <span class="icon icon-fancy" aria-hidden="true"></span>
                                 Fancy
                               </a>
@@ -554,72 +554,17 @@
 
             <div class="grid__item large--one-third medium--one-third small--one-whole large--text-left medium--text-left small--text-center nyerie-footer__grid-item">
 
-
-                {% if settings.footer_newsletter_enable %}
-                    <div class="nyerie-footer__col-wrapper">
-                        <div class="nyerie-footer__col-header">Mailing List</div>
-                        <div class="nyerie-footer__col-input">
-
-                                  {% comment %}
-
-                                    MailChimp is the go-to newsletter service for Shopify.
-                                    Use the link below to find your MailChimp "form action"
-                                    and insert it in your site settings.
-
-                                    MailChimp newsletter integration and requirement:
-                                     - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
-
-                                  {% endcomment %}
-                                  {% if settings.newsletter_form_action != blank %}
-                                    {% assign form_action = settings.newsletter_form_action %}
-                                    <form action="{{ form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-                                      <label for="Email" class="newsletter__label hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
-                                      <div class="nyerie-footer__newsletter-form">
-                                        <div class="input-group">
-                                          <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="Email" class="input-group-field nyerie-footer__newsletter__input" autocorrect="off" autocapitalize="off">
-                                          <span class="input-group-btn">
-                                            <button type="submit" class="btn nyerie-footer__newsletter__submit" name="subscribe" id="Subscribe">
-                                                <span class="newsletter__submit-text--large">
-                                                Subscribe</span>
-                                                <span class="newsletter__submit-text--small">
-                          <span class="icon icon-arrow-right" aria-hidden="true"></span></span>
-                                            </button>
-                                          </span>
-                                        </div>
-                                      </div>
-                                    </form>
-                                  {% else %}
-                                    {% form 'customer' %}
-                                      {{ form.errors | default_errors }}
-                                      {% if form.posted_successfully? %}
-                                        <div class="newsletter--form">
-                                          <div class="note form-success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>
-                                        </div>
-                                      {% else %}
-                                        <label for="Email" class="newsletter__label hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
-                                        <input type="hidden" name="contact[tags]" value="newsletter">
-                                        <div class="newsletter--form">
-                                          <div class="input-group">
-                                            <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field nyerie-footer__newsletter__input" autocorrect="off" autocapitalize="off">
-                                            <span class="input-group-btn">
-                                              <button type="submit" class="btn nyerie-footer__newsletter__submit" name="commit" id="Subscribe"><span class="newsletter__submit-text--large">
-                                              Subscribe</span>
-                                              <span class="newsletter__submit-text--small newsletter__submit-text--medium">
-                        <span class="icon icon-arrow-right" aria-hidden="true"></span></span></button>
-                                            </span>
-                                          </div>
-                                        </div>
-                                      {% endif %}
-                                    {% endform %}
-                                  {% endif %}
+                <div class="nyerie-footer__col-wrapper">
 
 
+        			<div class="nyerie-footer__col-header">Mailing List</div>
 
-
-
-                        </div>
+            		<div class="nyerie-footer__col-input">
+                        {% if settings.footer_newsletter_enable %}
+                            {% include 'newsletter-form' %}
+                        {% endif %}
                     </div>
-                {% endif %}
+                </div>
 
             </div>
 
@@ -729,6 +674,10 @@
       {% include 'search-bar', search_btn_style: 'btn', search_bar_location: 'search-bar--modal' %}
     </div>
   {% endif %}
+
+  {% assign show_mailing_list_header = false %}
+  {% include 'newsletter-popup' %}
+
 
 </body>
 </html>
