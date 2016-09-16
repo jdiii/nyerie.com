@@ -88,8 +88,15 @@
                 <div class="grid-header__image-wrapper">
                     <div class="grid-header__image">
                         {% if collection.image %}<img src="{{ collection.image | img_url: 'original' }}" alt="{{collection.title}}. Attire from around the world at nyerie.com" class="">
-                        {% else %}<img src="http://placehold.it/1000x1000" class="">
+                        {% else %}<img src="http://placehold.it/800x600" class="">
                         {% endif %}
+                        {% if collection.metafields.designer.image_caption %}
+                        <div class="image-caption text-center">
+                            {{ collection.metafields.designer.image_caption }}
+                        </div>
+                        {% endif %}
+
+                        </div>
                     </div>
             </div></div>
         </header>

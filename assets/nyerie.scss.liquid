@@ -144,6 +144,7 @@ a.nyerie-footer__bottom-text:hover {
     background-color: rgba(255,255,255,0.98);
     border: 1px solid #f6f6f6;
     padding: 30px;
+    box-shadow: 1px 1px 1px 1px rgba(180,180,180,0.4);
 }
 
 .popup-contents__tag {
@@ -152,7 +153,7 @@ a.nyerie-footer__bottom-text:hover {
     font-weight: normal;
 }
 
-.popup-contents__subtag {
+.popup-contents__subtag, .image-caption {
     font-size: 16px;
     font-style: italic;
     color: #333;
@@ -169,7 +170,7 @@ a.nyerie-footer__bottom-text:hover {
 
 .popup-contents__newsletter-form {
     padding-top: 20px;
-    padding-bottom: 20px;
+    /* padding-bottom: 20px;*/
 }
 
 .popup-contents__no-thanks:hover {
@@ -177,6 +178,24 @@ a.nyerie-footer__bottom-text:hover {
     text-decoration: underline;
 }
 
+.popup-form__field {
+    font-size: 15px;
+    margin-top:15px;
+    padding: 5px;
+    height: 30px;
+    width: 100%;
+    border: 1px solid #f6f6f6;
+}
+
+.popup-form__submit {
+    margin-top: 15px;
+}
+
 .input-group-field {
     border: 1px solid #f6f6f6;
+}
+
+.popup-content__error-response {
+    color: red;
+    margin-top: 15px;
 }
