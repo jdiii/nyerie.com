@@ -1307,14 +1307,6 @@ theme.equalHeights = function () {
   function resizeElements() {
     theme.cache.$productGridImages.css('height', 'auto').equalHeights();
 
-    /* JD - resize header imgs on large screens */
-    if($( document ).width() > 1000){
-        var headerHeight = $('.grid-header__image').innerHeight();
-        $('.grid-header__text-wrapper').css('height', headerHeight + 'px');
-    } else {
-        $('.grid-header__text-wrapper').css('height', 'auto');
-    }
-
   }
 };
 
@@ -1708,8 +1700,6 @@ var popup = {
 };
 
 
-
-
 // Initialize theme's JS on docready
 $(document).ready(function(){
 
@@ -1729,5 +1719,30 @@ $(document).ready(function(){
     } else {
         popup.destroy();
     }
+
+
+
+    $(window).load(function(){
+
+        /* make adjustments for skinny header photos */
+        var img = $('.designer-img');
+        var img_width = img.width();
+        if(img_width && img_width < 600){
+            $('.designer-desc-wrapper').removeClass('large--one-third').addClass('large--four-twelfths').addClass('push--large--one-twelfth');
+            $('.designer-img-wrapper').removeClass('large--two-thirds').addClass('push--large--two-twelfths large--four-twelfths');
+            //$('.designer-grid').addClass('grid--rev');
+            $('.designer-description').css('max-width', '400px');
+        }
+
+        /* JD - resize header imgs on large screens */
+        if($( document ).width() > 1000){
+            var headerHeight = $('.grid-header__image').innerHeight();
+            $('.grid-header__text-wrapper').css('height', headerHeight + 'px');
+        } else {
+            $('.grid-header__text-wrapper').css('height', 'auto');
+        }
+
+
+    });
 
 });

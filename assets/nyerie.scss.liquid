@@ -76,10 +76,24 @@ input.input-group-field.nyerie-footer__newsletter__input {
 
 .designer-description, .page-description {
     display: block;
-	max-width:320px;
-	font-size:small;
+	max-width: 320px;
+	font-size: small;
 	margin: 0 auto;
 	text-align: justify;
+}
+
+.long-block {
+    display: block;
+    max-width: 600px;
+    font-size: small;
+    margin: 0 auto;
+    text-align: left;
+
+    h1 {
+        font-size: medium;
+        font-weight: normal;
+        text-align: center;
+    }
 }
 
 .grid-header__text-wrapper {
@@ -125,7 +139,7 @@ a.nyerie-footer__bottom-text:hover {
 
 .blog-text {
     margin: 1em 0;
-    font-size: large;
+    /* font-size: large;*/
 }
 
 /* NEWSLETTER POPUP */
@@ -138,23 +152,24 @@ a.nyerie-footer__bottom-text:hover {
     width: 100%;
     background: none;
     display: none;
+    z-index: 1000;
 }
 
 .popup-contents {
-    background-color: rgba(255,255,255,0.98);
-    border: 1px solid #f6f6f6;
+    background-color: rgba(255,255,255,0.95);
+    border: 1px solid #888;
     padding: 30px;
-    box-shadow: 1px 1px 1px 1px rgba(180,180,180,0.4);
+    box-shadow: 0px 0px 4px 2px rgba(128,128,128,0.8);
 }
 
 .popup-contents__tag {
-    font-size: 20px;
+    font-size: 18px;
     color: black;
     font-weight: normal;
 }
 
 .popup-contents__subtag, .image-caption {
-    font-size: 16px;
+    font-size: 14px;
     font-style: italic;
     color: #333;
     font-weight:light;
@@ -169,8 +184,8 @@ a.nyerie-footer__bottom-text:hover {
 }
 
 .popup-contents__newsletter-form {
-    padding-top: 20px;
-    /* padding-bottom: 20px;*/
+    /* padding-top: 20px;
+     padding-bottom: 20px;*/
 }
 
 .popup-contents__no-thanks:hover {
@@ -184,7 +199,8 @@ a.nyerie-footer__bottom-text:hover {
     padding: 5px;
     height: 30px;
     width: 100%;
-    border: 1px solid #f6f6f6;
+    border: 1px solid #ddd;
+    color: #333;
 }
 
 .popup-form__submit {
@@ -198,4 +214,8 @@ a.nyerie-footer__bottom-text:hover {
 .popup-content__error-response {
     color: red;
     margin-top: 15px;
+}
+
+.blog-article-header {
+    margin: 2em 0em;
 }

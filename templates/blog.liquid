@@ -1,5 +1,5 @@
 <!-- /templates/blog.liquid -->
-{% paginate blog.articles by 5 %}
+{% paginate blog.articles by 3 %}
 
 <div class="grid">
 
@@ -28,39 +28,53 @@
       {% if article.image %}
         {% assign featured_image_src = article | img_url: '1200x1200' %}
       {% elsif article_content contains '<img' %}
-        {% assign featured_image_src = article_content | split: 'src="' %}
-        {% assign featured_image_src = featured_image_src[1] | split: '"' | first %}
+        {% comment %}
+            {% assign featured_image_src = article_content | split: 'src="' %}
+            {% assign featured_image_src = featured_image_src[1] | split: '"' | first %}
+        {% endcomment %}
+            {% assign featured_image_src = blank %}
       {% endif %}
 
       <article class="article grid small--text-center">
 
-        {% unless featured_image_src == blank %}
-          <div class="grid__item">
-            <a class="article__featured-image" href="{{ article.url }}">
-              {{ featured_image_src | img_tag: article.title }}
-            </a>
-          </div>
-        {% endunless %}
 
+        <div class="grid__item large--eight-tenths push--large--one-tenth">
 
-        <div class="grid__item large--six-tenths push--large--two-tenths">
-          <h1 class="text-center"><a href="{{ article.url }}">{{ article.title }}</a></h1>
-          <div class="page-description text-center">
-            <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}" class="date">{{ article.published_at | date: format: 'month_day_year' }}</time>
-          </div>
-          <div class="blog-text rte rte--indented-images">
-            {{ article_content | strip_html | truncatewords: 120 }}
-          </div>
+            <div class="blog-article-header">
+                <div class="page-description text-center">
+                  <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}" class="date">{{ article.published_at | date: format: 'month_day_year' }}</time>
+                </div>
 
+                <h1 class="text-center"><a href="{{ article.url }}">{{ article.title }}</a></h1>
+            </div>
+
+            {% unless featured_image_src == blank %}
+                  <a class="article__featured-image" href="{{ article.url }}">
+                    {{ featured_image_src | img_tag: article.title }}
+                  </a>
+            {% endunless %}
+
+        </div>
+        <div class="grid__item large--six-tenths push--large--two-tenths medium--eight-tenths push--medium--one-tenth">
+
+            <div class="blog-text rte rte--indented-images">
+                {% comment %}{{ article_content | strip_html | truncatewords: 200 }}{% endcomment %}
+                {{ article_content }}
+            </div>
+
+        {% comment %}
           <p class="text-center">
             <a href="{{ article.url }}" class="text-link">{{ 'blogs.article.read_more' | t }} <span class="icon icon-arrow-right" aria-hidden="true"></span></a>
+
           </p>
+          {% endcomment %}
 
           {% if article.tags.size > 0 %}
             <ul class="tags tags--article inline-list">
               {% include 'tags-article' %}
             </ul>
           {% endif %}
+
         </div>
       </article>
 

@@ -2,12 +2,23 @@
   Collection template, used on collection.liquid and collection.image.liquid
 {% endcomment %}
 
-{% paginate collection.products by 12 %}
+{% paginate collection.products by 100 %}
+
+{% assign show_category_image = true %}
+{% for link in linklists.categories.links %}
+    {% if link.title == collection.title %}
+        {% assign show_category_image = false %}
+    {% endif %}
+{% endfor %}
 
 <div class="grid-uniform">
     <div class="grid__item">
-        <header class="grid-uniform">
-            <div class="grid__item large--one-third medium--one-whole small--one-whole" style="vertical-align:middle">
+        <header class="grid-uniform designer-grid">
+            {% if collection.image and show_category_image %}
+                <div class="grid__item large--one-third medium--one-whole small--one-whole designer-desc-wrapper" style="vertical-align:middle">
+            {% else %}
+                <div class="grid__item large--one-whole medium--one-whole small--one-whole designer-desc-wrapper" style="vertical-align:middle">
+            {% endif %}
             <div class="grid-header__text-wrapper">
             <div class="grid-header__text">
               <h1 class="text-center">{{ collection.title }}</h1>
@@ -84,10 +95,12 @@
               </div></div>
             </div>
             {% comment %} Header Image {% endcomment %}
-            <div class="grid__item large--two-thirds medium--one-whole small--one-whole">
+            {% if collection.image and show_category_image %}
+            <div class="grid__item large--two-thirds medium--one-whole small--one-whole small--hide designer-img-wrapper">
                 <div class="grid-header__image-wrapper">
-                    <div class="grid-header__image">
-                        {% if collection.image %}<img src="{{ collection.image | img_url: 'original' }}" alt="{{collection.title}}. Attire from around the world at nyerie.com" class="">
+                    <div class="grid-header__image text-center">
+                        {% if collection.image %}
+                            <img src="{{ collection.image | img_url: '800x600' }}" alt="{{collection.title}}. Attire from around the world at nyerie.com" class="designer-img">
                         {% else %}<img src="http://placehold.it/800x600" class="">
                         {% endif %}
                         {% if collection.metafields.designer.image_caption %}
@@ -96,9 +109,12 @@
                         </div>
                         {% endif %}
 
-                        </div>
                     </div>
-            </div></div>
+                </div>
+            </div>
+            {% endif %}
+
+            </div>
         </header>
     </div>
 
